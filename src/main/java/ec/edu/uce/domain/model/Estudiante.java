@@ -1,9 +1,7 @@
 package ec.edu.uce.domain.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-import io.quarkus.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,6 +37,11 @@ public class Estudiante {
     @Column(name = "estu_genero")
     private String genero;
 
+    @Column(name = "estu_cedula" , unique = true , nullable = false)
+    private String cedula;
+
+
+
     public Integer getId() {
         return id;
     }
@@ -69,6 +72,19 @@ public class Estudiante {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+    public String getCedula() {
+        return cedula;
+    }
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+    @Override
+    public String toString() {
+        return "Estudiante [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento="
+                + fechaNacimiento + ", genero=" + genero + ", cedula=" + cedula + "]";
+    }
+    
+    
 
     
 }

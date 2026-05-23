@@ -36,6 +36,11 @@ public abstract class Estudiante_ {
 	 * @see #genero
 	 **/
 	public static final String GENERO = "genero";
+	
+	/**
+	 * @see #cedula
+	 **/
+	public static final String CEDULA = "cedula";
 
 	
 	/**
@@ -67,6 +72,11 @@ public abstract class Estudiante_ {
 	 * Static metamodel for attribute {@link ec.edu.uce.domain.model.Estudiante#genero}
 	 **/
 	public static volatile SingularAttribute<Estudiante, String> genero;
+	
+	/**
+	 * Static metamodel for attribute {@link ec.edu.uce.domain.model.Estudiante#cedula}
+	 **/
+	public static volatile SingularAttribute<Estudiante, String> cedula;
 
 }
 

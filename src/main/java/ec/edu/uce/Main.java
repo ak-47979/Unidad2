@@ -1,6 +1,7 @@
 package ec.edu.uce;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import ec.edu.uce.application.service.EstudianteService;
 import ec.edu.uce.domain.model.Estudiante;
@@ -27,11 +28,11 @@ public class Main {
             
             //Creacion de un nuevo Estudiante
             Estudiante estudiante = new Estudiante();
-            estudiante.setNombre("Andy");
-            estudiante.setApellido("Suquilandi");
-            estudiante.setFechaNacimiento(LocalDate.of(2004, 6, 23));
+            estudiante.setNombre("Alex");
+            estudiante.setApellido("Cordova");
+            estudiante.setFechaNacimiento(LocalDate.of(2005, 7, 12));
             estudiante.setGenero("M");
-            
+       /*      
             //Guardar un nuevo estudiante
             System.out.println("Guardando un nuevo Estudiante...");
             estudianteService.guardar(estudiante);
@@ -42,13 +43,30 @@ public class Main {
             
             //Metodo Actualizar
             System.out.println("Actualizar los Datos por ID...");
-            Estudiante estudiante2 = this.estudianteService.buscarPorId(4);
-            estudiante2.setNombre("Alex");
+            Estudiante estudiante2 = this.estudianteService.buscarPorId(3);
+            estudiante2.setNombre("Paul");
+            estudiante2.setApellido("Gomez");
             this.estudianteService.actualizar(estudiante2);
 
             //Buscar al Estudiante por ID
             System.out.println("Buscando Estudiante por ID...");
-            System.out.println(estudianteService.buscarPorId(4).toString());
+            System.out.println(estudianteService.buscarPorId(2).toString());
+
+            //Seleccionar todos los estudiantes
+            System.out.println("Seleccionar todos los estudiantes...");
+            estudianteService.buscarTodos().forEach(e -> System.out.println(e.toString()));
+
+            //Seleccionar por nombre
+            System.out.println("Seleccionar por nombre...");
+            List<Estudiante> estudiantesporNombre = estudianteService.buscarPorNombre("Alex");
+            for (Estudiante e : estudiantesporNombre) {
+                System.out.println(e);
+            }
+*/
+            //seleccionar por cedula
+            System.out.println("Seleccionar por cedula...");
+            Estudiante estudianteporCedula = estudianteService.buscarPorCedula("1752364148");
+            System.out.println(estudianteporCedula);
 
             return 0;
         }
