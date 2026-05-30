@@ -87,11 +87,20 @@ public class Main {
             for (Estudiante e : estudiantesporRangoFecha) {
                 System.out.println(e);
             }
-
+            //Contar el numero de estudiantes usando NamedQuery
             System.out.println("Contar el numero de estudiantes usando NamedQuery...");
             Long totalEstudiantes = estudianteService.contar();
             System.out.println("Total de estudiantes: " + totalEstudiantes);
-            Quarkus.waitForExit();
+            
+            
+            //Seleccionar todos los estudiantes usando Native Query
+            System.out.println("Seleccionar todos los estudiantes usando Native Query...");
+            List<Estudiante> estudiantesTodosNative = estudianteService.buscarTodosNative();
+            for (Estudiante e : estudiantesTodosNative) {
+                System.out.println(e);
+            }
+
+             Quarkus.waitForExit();
             return 0;
         }
 

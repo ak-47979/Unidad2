@@ -102,4 +102,14 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
        TypedQuery<Long> contar = this.em.createNamedQuery("Estudiante.contar", Long.class);
        return contar.getSingleResult();
     }
+
+    @Override
+    //para suprimir los warnings, es decir,
+    // como segundo parametro del metodo createNativeQuery
+    @SuppressWarnings("unchecked")
+    public List<Estudiante> seleccionarTodosNative() {
+      Query query = this.em.createNativeQuery("SELECT * FROM estudiante", Estudiante.class);
+      return query.getResultList();
+    }
 }
+      

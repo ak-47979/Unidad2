@@ -20,4 +20,7 @@ public interface EstudianteRepository {
     public List<Estudiante> seleccionarPorGeneroTyped(String genero);
     public List<Estudiante> seleccionarPorRangoFecha(LocalDate fechaInicio, LocalDate fechaFin);
     public Long contar();
+
+    //Native QUERY
+    public List<Estudiante> seleccionarTodosNative();
 }
