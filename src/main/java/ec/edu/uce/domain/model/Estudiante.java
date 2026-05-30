@@ -7,13 +7,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 /*reconoce a la clase Estudiante como una entidad de la base de datos */
 @Entity
 //especifica el nombre de la tabla en la base de datos a la que se asignará esta entidad
 @Table(name = "estudiante")
-
+//se le da un alias a este JPQL(en este caso select Estudiante), y se lo puede llamar por ese alias, dando un solo nombre a nivel de entidad.
+//se le asigna un nombre a esta consulta, y se le asigna 
+// una consulta JPQL, que es una consulta orientada a 
+// objetos, es decir, se consulta a la entidad Estudiante,
+//  y se le asigna un parámetro llamado genero, 
+// que se lo puede usar en el código para buscar por género
+//Para uno
+//@NamedQuery(name = "Estudiante.buscarPorGenero", query = "SELECT e FROM Estudiante e WHERE e.genero = :genero")
+//@NamedQuery(name = "Estudiante.buscarPorApellido", query = "SELECT e FROM Estudiante e WHERE e.apellido = :apellido")
+//Para varios NamedQuery se usa la anotación @NamedQueries, que es un contenedor de varios NamedQuery
+@NamedQueries({
+    @NamedQuery(name = "Estudiante.buscarPorGenero", query = "SELECT e FROM Estudiante e WHERE e.genero = :genero"),
+    @NamedQuery(name = "Estudiante.buscarPorApellido", query = "SELECT e FROM Estudiante e WHERE e.apellido = :apellido"),
+    @NamedQuery(name = "Estudiante.buscarPorRangoFecha", query = "SELECT e FROM Estudiante e WHERE e.fechaNacimiento BETWEEN :fechaInicio AND :fechaFin"),
+    @NamedQuery(name = "Estudiante.contar", query = "SELECT COUNT(e) FROM Estudiante e")
+    
+})
 public class Estudiante {
 //cada atributo de la clase representa una columna en la tabla de la base de datos
     // dice a que columna de la tabla se asignará el atributo id, en este caso a la columna "id"

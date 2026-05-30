@@ -1,5 +1,6 @@
 package ec.edu.uce.domain.model;
 
+import jakarta.persistence.TypedQueryReference;
 import jakarta.persistence.metamodel.EntityType;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
@@ -41,6 +42,26 @@ public abstract class Estudiante_ {
 	 * @see #cedula
 	 **/
 	public static final String CEDULA = "cedula";
+	
+	/**
+	 * @see #_Estudiante_buscarPorGenero_
+	 **/
+	public static final String QUERY_ESTUDIANTE_BUSCAR_POR_GENERO = "Estudiante.buscarPorGenero";
+	
+	/**
+	 * @see #_Estudiante_buscarPorApellido_
+	 **/
+	public static final String QUERY_ESTUDIANTE_BUSCAR_POR_APELLIDO = "Estudiante.buscarPorApellido";
+	
+	/**
+	 * @see #_Estudiante_buscarPorRangoFecha_
+	 **/
+	public static final String QUERY_ESTUDIANTE_BUSCAR_POR_RANGO_FECHA = "Estudiante.buscarPorRangoFecha";
+	
+	/**
+	 * @see #_Estudiante_contar_
+	 **/
+	public static final String QUERY_ESTUDIANTE_CONTAR = "Estudiante.contar";
 
 	
 	/**
@@ -77,6 +98,40 @@ public abstract class Estudiante_ {
 	 * Static metamodel for attribute {@link ec.edu.uce.domain.model.Estudiante#cedula}
 	 **/
 	public static volatile SingularAttribute<Estudiante, String> cedula;
+	
+	/**
+	 * The query named {@value QUERY_ESTUDIANTE_BUSCAR_POR_GENERO}
+	 *
+	 * @see ec.edu.uce.domain.model.Estudiante
+	 **/
+	public static volatile TypedQueryReference<Object> _Estudiante_buscarPorGenero_;
+	
+	/**
+	 * The query named {@value QUERY_ESTUDIANTE_BUSCAR_POR_APELLIDO}
+	 *
+	 * @see ec.edu.uce.domain.model.Estudiante
+	 **/
+	public static volatile TypedQueryReference<Object> _Estudiante_buscarPorApellido_;
+	
+	/**
+	 * The query named {@value QUERY_ESTUDIANTE_BUSCAR_POR_RANGO_FECHA}
+	 * <pre>
+	 * SELECT e FROM Estudiante e WHERE e.fechaNacimiento BETWEEN :fechaInicio AND :fechaFin
+	 * </pre>
+	 *
+	 * @see ec.edu.uce.domain.model.Estudiante
+	 **/
+	public static volatile TypedQueryReference<Estudiante> _Estudiante_buscarPorRangoFecha_;
+	
+	/**
+	 * The query named {@value QUERY_ESTUDIANTE_CONTAR}
+	 * <pre>
+	 * SELECT COUNT(e) FROM Estudiante e
+	 * </pre>
+	 *
+	 * @see ec.edu.uce.domain.model.Estudiante
+	 **/
+	public static volatile TypedQueryReference<Long> _Estudiante_contar_;
 
 }
 

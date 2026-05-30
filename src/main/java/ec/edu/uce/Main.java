@@ -67,7 +67,31 @@ public class Main {
             System.out.println("Seleccionar por cedula...");
             Estudiante estudianteporCedula = estudianteService.buscarPorCedula("1752364148");
             System.out.println(estudianteporCedula);
+            //1.2 NamedQuery--------------------------------------------------------------------------------------------------------------
+            //Seleccionar por genero
+            System.out.println("Seleccionar por genero...");
+            List<Estudiante> estudiantesporGenero = estudianteService.buscarPorGenero("M");
+            for (Estudiante e : estudiantesporGenero) {
+                System.out.println(e);
+            }
 
+            //Seleccionar por genero usando NamedQuery
+            System.out.println("Seleccionar por genero usando NamedQuery...");  
+            List<Estudiante> estudiantesporGeneroTyped = estudianteService.buscarPorGeneroTyped("M");
+            for (Estudiante e : estudiantesporGeneroTyped) {
+                System.out.println(e);
+            }
+            //Seleccionar por rango de fecha usando NamedQuery
+            System.out.println("Seleccionar por rango de fecha usando NamedQuery...");  
+            List<Estudiante> estudiantesporRangoFecha = estudianteService.buscarPorRangoFecha(LocalDate.of(2004, 1, 1), LocalDate.of(2007, 12, 31));
+            for (Estudiante e : estudiantesporRangoFecha) {
+                System.out.println(e);
+            }
+
+            System.out.println("Contar el numero de estudiantes usando NamedQuery...");
+            Long totalEstudiantes = estudianteService.contar();
+            System.out.println("Total de estudiantes: " + totalEstudiantes);
+            Quarkus.waitForExit();
             return 0;
         }
 
