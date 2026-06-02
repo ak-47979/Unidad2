@@ -63,6 +63,7 @@ public class Main {
                 System.out.println(e);
             }
 */
+/*
             //seleccionar por cedula
             System.out.println("Seleccionar por cedula...");
             Estudiante estudianteporCedula = estudianteService.buscarPorCedula("1752364148");
@@ -98,9 +99,43 @@ public class Main {
             List<Estudiante> estudiantesTodosNative = estudianteService.buscarTodosNative();
             for (Estudiante e : estudiantesTodosNative) {
                 System.out.println(e);
+            }*/
+            /*
+            System.out.println("Seleccionar todos los estudiantes usando Criteria API...");
+            List<Estudiante> estudiantesTodosCriteria = estudianteService.buscarTodosCriteria();
+            for (Estudiante e : estudiantesTodosCriteria) {
+                System.out.println(e);
             }
 
-             Quarkus.waitForExit();
+            System.out.println("Seleccionar por nombre usando Criteria API...");
+            List<Estudiante> estudiantesPorNombreCriteria = estudianteService.buscarPorNombreCriteria("Alex");
+            for(Estudiante e: estudiantesPorNombreCriteria){
+                System.out.println(e);
+            } 
+            */
+            //Query que se consulte por nombre o apellido a menos que uno de los dos sea nulo
+            //metodo dinamico, nombre apellido, se construye la condicion no sea nulo,
+            // si es nulo se crea la condicion con el valor que no es nulo, si ambos son nulos se lanza una excepcion o se devuelve una lista vacia
+            System.out.println("Seleccionar por nombre o apellido usando Criteria API...");
+            List<Estudiante> estudiantesDinamica1 = estudianteService.buscarDinamica("Alex", "Cordova");
+            for(Estudiante e: estudiantesDinamica1){
+                System.out.println(e);
+            }
+            System.out.println("Seleccionar por nombre o apellido usando Criteria API, apellido nulo...");
+            List<Estudiante> estudiantesDinamica2 = estudianteService.buscarDinamica(null, "Cordova");
+            for(Estudiante e: estudiantesDinamica2){
+                System.out.println(e);
+            }
+             System.out.println("Seleccionar por nombre o apellido usando Criteria API, nombre nulo...");
+            List<Estudiante> estudiantesDinamica3 = estudianteService.buscarDinamica("Alex", null);
+            for(Estudiante e: estudiantesDinamica3){
+                System.out.println(e);
+            }
+            System.out.println("Seleccionar por nombre o apellido usando Criteria API, ambos nulos...");
+            List<Estudiante> estudiantesDinamica4 = estudianteService.buscarDinamica(null, null);
+            for(Estudiante e: estudiantesDinamica4){
+                System.out.println(e);
+            }
             return 0;
         }
 
