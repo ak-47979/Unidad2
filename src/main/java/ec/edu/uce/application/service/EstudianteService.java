@@ -22,7 +22,7 @@ public class EstudianteService {
     }
 
     public void eliminar(Integer id){
-        this.estudianteRepository.eliminar(id);;
+        this.estudianteRepository.eliminar(id);
 
     }
 
