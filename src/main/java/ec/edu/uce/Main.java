@@ -36,7 +36,8 @@ public class Main {
             LocalTime time = LocalTime.of(8, 30);
             ciudadano.setFechaNacimiento(LocalDateTime.of(date, time));
             ciudadanoService.insertar(ciudadano);
-       
+            
+            //Taller21
             return 0;
         }
 
