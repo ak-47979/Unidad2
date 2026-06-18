@@ -66,6 +66,6 @@ Create your first JPA entity
 
 [Related guide section...](https://quarkus.io/guides/hibernate-orm)
 
-[Related Hibernate with Panache Next section...](https://quarkus.io/guides/hibernate-panache-next)
+Author:Andy Suquilandi
 
 
