@@ -46,18 +46,20 @@ public class Main {
             Pedido pedido = new Pedido();
             pedido.setTotal(10.0);
             pedido.setFecha(LocalDate.of(2000, 11, 10));
+            pedido.setCliente(cliente);
+            pedido.setCliente(cliente);
 
             Pedido pedido2 = new Pedido();
             pedido2.setTotal(100.0);
             pedido2.setFecha(LocalDate.of(2001, 10, 5));
-           
+            pedido2.setCliente(cliente);
 
             List<Pedido> pedidos = new ArrayList<>();
             pedidos.add(pedido);
             pedidos.add(pedido2);
 
             cliente.setPedidos(pedidos);
-            
+
             clienteService.insertar(cliente);
             return 0;
         }
