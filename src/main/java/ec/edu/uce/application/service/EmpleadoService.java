@@ -21,7 +21,6 @@ public class EmpleadoService {
   public  void insertar(Empleado  empleado ,Ciudadano ciudadano2){
    
             ciudadanoRepository.insertar(ciudadano2);
-            System.out.println("Se inserto ciudadano "+ ciudadano2);
             empleado.setCiudadano(ciudadano2);
             this.empleadoRepository.insertar(empleado);
   }

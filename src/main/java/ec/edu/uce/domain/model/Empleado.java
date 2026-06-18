@@ -27,7 +27,7 @@ private Double salario;
 @Column(name="emp_fechaIngreso")
 private LocalDateTime fechaIngreso;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="emp_ciudadano")
     private Ciudadano ciudadano;
     public Empleado(){
