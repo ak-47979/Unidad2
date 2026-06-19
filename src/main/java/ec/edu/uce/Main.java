@@ -59,7 +59,7 @@ public class Main {
             pedidos.add(pedido2);
 
             cliente.setPedidos(pedidos);
-
+            ///ter
             clienteService.insertar(cliente);
             return 0;
         }
