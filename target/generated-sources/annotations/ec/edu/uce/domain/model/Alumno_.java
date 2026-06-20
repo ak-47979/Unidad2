@@ -23,9 +23,9 @@ public abstract class Alumno_ {
 	public static final String NOMBRE = "nombre";
 	
 	/**
-	 * @see #materia
+	 * @see #materias
 	 **/
-	public static final String MATERIA = "materia";
+	public static final String MATERIAS = "materias";
 
 	
 	/**
@@ -44,9 +44,9 @@ public abstract class Alumno_ {
 	public static volatile SingularAttribute<Alumno, String> nombre;
 	
 	/**
-	 * Static metamodel for attribute {@link ec.edu.uce.domain.model.Alumno#materia}
+	 * Static metamodel for attribute {@link ec.edu.uce.domain.model.Alumno#materias}
 	 **/
-	public static volatile ListAttribute<Alumno, Materia> materia;
+	public static volatile ListAttribute<Alumno, Materia> materias;
 
 }
 

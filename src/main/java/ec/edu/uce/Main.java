@@ -1,15 +1,9 @@
 package ec.edu.uce;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import ec.edu.uce.application.service.CiudadanoService;
+import ec.edu.uce.application.service.AlumnoService;
 import ec.edu.uce.application.service.ClienteService;
-import ec.edu.uce.application.service.EmpleadoService;
-import ec.edu.uce.application.service.EstudianteService;
-import ec.edu.uce.domain.model.Cliente;
-import ec.edu.uce.domain.model.Pedido;
+import ec.edu.uce.application.service.MateriaService;
+import ec.edu.uce.domain.model.Alumno;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
@@ -24,11 +18,9 @@ public class Main {
     public static class App implements QuarkusApplication   {
 
     @Inject
-    private EstudianteService estudianteService;
+    private MateriaService materiaService;
     @Inject
-    private CiudadanoService ciudadanoService;
-     @Inject
-    private EmpleadoService empleadoService;
+    private AlumnoService alumnoService;
 
      @Inject
     private ClienteService clienteService;
@@ -37,30 +29,58 @@ public class Main {
             
             System.out.println("Conexion a la base de datos POSTGRES!");
            
-           //One to Many
+           
+/* 
+           Alumno alumno = new Alumno();
+           alumno.setNombre("Andy");
 
-           Cliente cliente = new Cliente();
-           cliente.setCedula("1753025939");
-           cliente.setNombre("Andy Suquilandi"); 
+           Materia m1 = new Materia();
+           m1.setNombre("avanzada");
+           m1.setNumeroCreditos(4);
+           
+            Materia m2 = new Materia();
+           m2.setNombre("P WEB");
+           m2.setNumeroCreditos(6);
 
-            Pedido pedido = new Pedido();
-            pedido.setTotal(10.0);
-            pedido.setFecha(LocalDate.of(2000, 11, 10));
-            pedido.setCliente(cliente);
-            pedido.setCliente(cliente);
+           List<Materia> materias = new ArrayList<>();
+           materias.add(m1);
+           materias.add(m2);
 
-            Pedido pedido2 = new Pedido();
-            pedido2.setTotal(100.0);
-            pedido2.setFecha(LocalDate.of(2001, 10, 5));
-            pedido2.setCliente(cliente);
+           //insert service de alumno
+           alumno.setMateria(materias);
+           alumnoService.insertar(alumno);*/
 
-            List<Pedido> pedidos = new ArrayList<>();
-            pedidos.add(pedido);
-            pedidos.add(pedido2);
+            //2 Ejemplo
+            /*
+            Materia m2 = new Materia();
+            m2.setNombre("Programacion Avananzada II");
+            m2.setNumeroCreditos(4);
+ 
+            Alumno a1 = new Alumno();
+            a1.setNombre("Jhon");
+            a1.setMateria(List.of(m2));
+            Alumno a2 = new Alumno();
+            a2.setMateria(List.of(m2));
+            a2.setNombre("Andy");
 
-            cliente.setPedidos(pedidos);
-            ///ter
-            clienteService.insertar(cliente);
+            m2.setAlumnos(List.of(a1,a2));
+            materiaService.insertar(m2);*/
+
+            //crear una consulta por id e materia en el service de materia
+           /* Materia a =materiaService.findId(1);
+            System.out.println(a.toString());
+            var alumno = a.getAlumnos();
+            for (Object elem : alumno) {
+                System.out.println(elem.toString());
+            }
+            */
+            Alumno alum = alumnoService.buscarId(1);    
+            System.out.println(alum.toString());
+
+            var mate = alum.getMateria();
+            for (Object elem1 : mate) {
+                System.out.println(elem1.toString());
+            }
             return 0;
         }
 

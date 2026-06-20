@@ -2,8 +2,10 @@ package ec.edu.uce.domain.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,16 +27,20 @@ private Integer id;
 private String nombre;
 
 
-@ManyToMany
+@ManyToMany(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
 //nombre de tabla de rompimiento
 @JoinTable(name="alumno_materia", joinColumns = @JoinColumn(name="alma_id_alumno")
 ,inverseJoinColumns = @JoinColumn(name="alma_id_materia"))
-private List<Materia> materia;
+private List<Materia> materias;
 
 
 
     public Alumno(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Alumno() {
+      
     }
 
     public Integer getId() {
@@ -59,11 +65,11 @@ private List<Materia> materia;
     }
 
     public List<Materia> getMateria() {
-        return materia;
+        return materias;
     }
 
     public void setMateria(List<Materia> materia) {
-        this.materia = materia;
+        this.materias = materia;
     }
 
 

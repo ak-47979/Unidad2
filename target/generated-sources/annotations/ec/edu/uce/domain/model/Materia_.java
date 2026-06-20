@@ -1,6 +1,7 @@
 package ec.edu.uce.domain.model;
 
 import jakarta.persistence.metamodel.EntityType;
+import jakarta.persistence.metamodel.ListAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 
@@ -25,6 +26,11 @@ public abstract class Materia_ {
 	 * @see #numeroCreditos
 	 **/
 	public static final String NUMERO_CREDITOS = "numeroCreditos";
+	
+	/**
+	 * @see #alumnos
+	 **/
+	public static final String ALUMNOS = "alumnos";
 
 	
 	/**
@@ -46,6 +52,11 @@ public abstract class Materia_ {
 	 * Static metamodel for attribute {@link ec.edu.uce.domain.model.Materia#numeroCreditos}
 	 **/
 	public static volatile SingularAttribute<Materia, Integer> numeroCreditos;
+	
+	/**
+	 * Static metamodel for attribute {@link ec.edu.uce.domain.model.Materia#alumnos}
+	 **/
+	public static volatile ListAttribute<Materia, Alumno> alumnos;
 
 }
 

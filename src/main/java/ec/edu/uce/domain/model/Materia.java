@@ -1,10 +1,15 @@
 package ec.edu.uce.domain.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -25,12 +30,19 @@ public class Materia {
     private Integer numeroCreditos;
 
 
+    //MAPEO BIDIRECCIONAL
+    @ManyToMany(mappedBy ="materias",cascade= CascadeType.ALL,fetch= FetchType.EAGER)
+    private List<Alumno> alumnos;
 
+public Materia(){
 
+}
     public Materia(String nombre, Integer numeroCreditos) {
         this.nombre = nombre;
         this.numeroCreditos = numeroCreditos;
     }
+
+   
 
     public Integer getId() {
         return id;
@@ -65,6 +77,14 @@ public class Materia {
         sb.append(", numeroCreditos=").append(numeroCreditos);
         sb.append('}');
         return sb.toString();
+    }
+
+    public List<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(List<Alumno> alumnos) {
+        this.alumnos = alumnos;
     }
 
     
